@@ -49,6 +49,11 @@ variable "image_id" {
 
 variable "project_name"{
   type = string
+  description = "Nombre del grupo de recursos. Tiene que ser mayor a 4"
+  validation{
+    condition = length(var.project_name) > 4
+    error_message = "Nombre del grupo de recursos tiene que ser mayor que 4 caracteres."
+  }
 }
 
 
