@@ -13,6 +13,15 @@ provider "azurerm"{
 }
 
 resource "azurerm_resource_group" "ejemploCursoTerraformIntro" {
-  name     = "gr-curso-udemy-terraform-intro"
+  name     = "gr-curso-udemy-terraform-intro-2"
   location = "West Europe"
 }
+
+output "output-terraform-intro" {
+  value = azurerm_resource_group.ejemploCursoTerraformIntro.id
+}
+
+output "output-terraform-intro-2" {
+  value = azurerm_resource_group.ejemploCursoTerraformIntro.name
+}
+
