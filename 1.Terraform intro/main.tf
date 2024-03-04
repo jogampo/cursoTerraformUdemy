@@ -42,3 +42,32 @@ output "output-terraform-intro-2" {
   value = azurerm_resource_group.ejemploCursoTerraformIntro.name
 }
 
+variable "image_id" {
+  type        = list(string)
+  default     = ["dato_predeterminado"]
+}
+
+variable "project_name"{
+  type = string
+}
+
+
+resource "azurerm_resource_group" "ejemploVariablesCursoTerraformIntro" {
+  name     = var.project_name
+  location = "West Europe"
+}
+
+variable "docker_port"{
+  type = list(object({
+    internal = number
+    external = number
+    protocol = string
+  }))
+  default = [
+    {
+      internal = 5000
+      external = 4000
+      protocol = "tcp"
+    }
+  ]  
+}
