@@ -58,7 +58,13 @@ variable "project_name"{
 
 
 resource "azurerm_resource_group" "ejemploVariablesCursoTerraformIntro" {
-  name     = var.project_name
+  name     = "${var.project_name}_main"
+  location = "West Europe"
+}
+
+
+resource "azurerm_resource_group" "ejemploVariablesCursoTerraformIntroSecondary" {
+  name     = "${var.project_name}_secondary"
   location = "West Europe"
 }
 
@@ -76,3 +82,5 @@ variable "docker_port"{
     }
   ]  
 }
+
+
