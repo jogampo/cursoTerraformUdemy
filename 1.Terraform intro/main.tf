@@ -194,3 +194,14 @@ output "mayusculas" {
 output "filtered" {
    value = local.a_names
 }
+
+
+data "azurerm_resource_group"  "ejemploData"{
+  name = "gr-curso-udemy-terraform-intro-rg3"
+}
+
+output "TestDataSource"{
+  value = data.azurerm_resource_group.ejemploData.id
+}
+
+
