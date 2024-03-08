@@ -124,5 +124,59 @@ resource "azurerm_resource_group" "ejemploVariablesCursoTerraformIntroParaCountD
 }
 
 
+locals{
+  t_string = "Test"
+  t_number = 823.23
+  t_bool1 = false
+  t_bool2 = true
+  t_list = [
+    "element1",
+    89233,
+    true
+  ]
+  t_map = {
+    type = "Client"
+  }
+
+  t_customer = {
+    name = "minombre",
+    age = 200,
+    lista_cosas_gustan = {
+      deporte = "futbol"
+      juegos = "fifa"
+    }
+  }
+}
+
+output "deporte"{
+   value = local.t_customer.lista_cosas_gustan.deporte
+}
+
+locals {
+  t_operacion = 1 + 3
+  t_operacion2 = 1 * 3
+  t_operacion3 = 1 / 3
+}
+
+locals {
+  t_logical = 5 < 9
+  t_logical2 = 5 > 9
+  t_logical3 = (5 > 9) && (3 < 2)
+}
 
 
+variable "rg_count"{
+  type = number  
+}
+
+locals{
+  min_rg_number = 3
+  rg_no = var.rg_count > 0 ? var.rg_count : local.min_rg_number
+}
+
+
+resource "azurerm_resource_group" "ejemploVariablesCursoTerraformIntroParaCountDesdeVariable" {
+  count = local.rg_no
+  name     = "rg_${var.project_name}_desdevariable_${count.index}"
+  location = "West Europe"
+}
