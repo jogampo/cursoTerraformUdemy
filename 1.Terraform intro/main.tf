@@ -180,3 +180,17 @@ resource "azurerm_resource_group" "ejemploVariablesCursoTerraformIntroParaCountD
   name     = "rg_${var.project_name}_desdevariable_${count.index}"
   location = "West Europe"
 }
+
+locals{
+  names1 = ["Jorge" , "Hector", "Juan"]
+  mayus = [for i in local.names1: upper(i)]
+  a_names = [for i in local.names1: i if substr(i,0,1) == "J"]
+}
+
+output "mayusculas" {
+   value = local.mayus
+}
+
+output "filtered" {
+   value = local.a_names
+}
