@@ -89,7 +89,17 @@ locals {
 }
 
 resource "azurerm_resource_group" "ejemploVariablesCursoTerraformIntroTercero" {
-  name     = "${var.project_name}_secondary"
+  count = 3
+  name     = "${var.project_name}_tercero_${count.index}"
+  location = "West Europe"
+  tags = {
+    "team" = local.tag
+  }
+}
+
+resource "azurerm_resource_group" "ejemploVariablesCursoTerraformIntroParaCount0" {
+  count = 0
+  name     = "${var.project_name}_tercero_${count.index}"
   location = "West Europe"
   tags = {
     "team" = local.tag
