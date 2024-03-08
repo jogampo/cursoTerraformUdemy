@@ -83,4 +83,18 @@ variable "docker_port"{
   ]  
 }
 
+locals {
+  rg1 = azurerm_resource_group.ejemploVariablesCursoTerraformIntro.id
+  tag = "development"
+}
+
+resource "azurerm_resource_group" "ejemploVariablesCursoTerraformIntroTercero" {
+  name     = "${var.project_name}_secondary"
+  location = "West Europe"
+  tags = {
+    "team" = local.tag
+  }
+}
+
+
 
