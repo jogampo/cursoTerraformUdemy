@@ -107,4 +107,22 @@ resource "azurerm_resource_group" "ejemploVariablesCursoTerraformIntroParaCount0
 }
 
 
+locals{
+  names = {
+    name01 = "name01"
+    name02 = "name02"
+    name03 = "name03"
+  }
+}
+resource "azurerm_resource_group" "ejemploVariablesCursoTerraformIntroParaCountDiferentesNames" {
+  for_each = local.names
+  name     = "${var.project_name}_foreach_${each.value}"
+  location = "West Europe"
+  tags = {
+    "team" = local.tag
+  }
+}
+
+
+
 
