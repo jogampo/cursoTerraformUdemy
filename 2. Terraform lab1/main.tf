@@ -22,6 +22,7 @@ module "vnet"{
     source = "./modules/az_networking"
     rg_location = azurerm_resource_group.rgdemoLabCursoUdemy.location
     rg_name = azurerm_resource_group.rgdemoLabCursoUdemy.name
+    vnet_name = var.vnet_name
 }
 
 
